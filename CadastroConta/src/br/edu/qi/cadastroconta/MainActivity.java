@@ -111,6 +111,7 @@ public class MainActivity extends Activity {
 			} // fecha onCheckedChanged
 		}); // fecha listener
         
+		// adiciona evento para quando o radio group alterar a seleção
         rgTipoConta.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			
 			@Override
