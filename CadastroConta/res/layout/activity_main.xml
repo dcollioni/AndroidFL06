@@ -1,0 +1,86 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="br.edu.qi.cadastroconta.MainActivity" >
+
+    <EditText
+        android:id="@+id/et_nome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/nome"
+        android:inputType="textPersonName" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/et_cpf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="@string/cpf"
+        android:inputType="number" />
+
+    <CheckBox
+        android:id="@+id/cb_cartao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/cartao_credito" />
+
+    <CheckBox
+        android:id="@+id/cb_talao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/talao_cheques" />
+
+    <CheckBox
+        android:id="@+id/cb_seguro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:enabled="false"
+        android:text="@string/seguro_cartao" />
+
+    <RadioGroup
+        android:id="@+id/rg_tipo_conta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" >
+
+        <RadioButton
+            android:id="@+id/rd_corrente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/conta_corrente" />
+
+        <RadioButton
+            android:id="@+id/rd_poupanca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/conta_poupanca" />
+
+        <RadioButton
+            android:id="@+id/rd_salario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/conta_salario" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/bt_confirma"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="20dp"
+        android:text="@string/confirma" />
+
+</LinearLayout>
