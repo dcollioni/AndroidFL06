@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Spinners</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="azul">Azul</string>
+    <string name="vermelho">Vermelho</string>
+    <string name="amarelo">Amarelo</string>
+    
+    <string-array name="cores">
+        <item>@string/azul</item>
+        <item>@string/vermelho</item>
+        <item>@string/amarelo</item>
+    </string-array>
+
+</resources>
