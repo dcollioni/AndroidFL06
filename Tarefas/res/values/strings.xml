@@ -4,5 +4,16 @@
     <string name="app_name">Tarefas</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="descricao">Descrição</string>
+    <string name="adicionar">Adicionar</string>
+    <string name="alta">Alta</string>
+    <string name="media">Média</string>
+    <string name="baixa">Baixa</string>
+    
+    <string-array name="prioridades">
+        <item>@string/alta</item>
+        <item>@string/media</item>
+        <item>@string/baixa</item>
+    </string-array>
 
 </resources>
