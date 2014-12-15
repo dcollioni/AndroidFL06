@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DuasTelas</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="abrir_outra_tela">Abrir outra tela</string>
+    <string name="title_activity_outra">OutraActivity</string>
+    <string name="nome">Nome</string>
+    <string name="azul">Azul</string>
+    <string name="amarelo">Amarelo</string>
+    <string name="vermelho">Vermelho</string>
+    
+    <string-array name="cores">
+        <item>@string/azul</item>
+        <item>@string/amarelo</item>
+        <item>@string/vermelho</item>
+    </string-array>
+
+</resources>
