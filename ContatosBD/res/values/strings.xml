@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ContatosBD</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_form">Contato</string>
+    <string name="nome">Nome</string>
+    <string name="telefone">Telefone</string>
+    <string name="incluir">Incluir</string>
+    <string name="atualizar">Atualizar</string>
+    <string name="excluir_todos">Excluir todos</string>
+    <string name="excluir">Excluir</string>
+    <string name="confirmacao">Confirmação</string>
+    <string name="confirma_exclusao">Confirma a exclusão?</string>
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
+
+</resources>
