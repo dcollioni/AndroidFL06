@@ -8,5 +8,12 @@
     <string name="telefone">Telefone</string>
     <string name="adicionar">Adicionar</string>
     <string name="title_activity_detalhe">DetalheActivity</string>
+    <string name="ligar">Ligar</string>
+    <string name="excluir">Excluir</string>
+    <string name="ligando">Ligando...</string>
+    <string name="confirmacao">Confirmação</string>
+    <string name="confirma_exclusao">Confirma a exclusão do contato?</string>
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
 
 </resources>
