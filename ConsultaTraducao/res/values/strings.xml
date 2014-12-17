@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Consulta Tradução</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="texto">Texto</string>
+    <string name="traduzir">Traduzir</string>
+    
+    <string name="ingles">Inglês</string>
+    <string name="espanhol">Espanhol</string>
+    <string name="frances">Francês</string>
+    
+    <string-array name="idiomas">
+        <item>@string/ingles</item>
+        <item>@string/espanhol</item>
+        <item>@string/frances</item>
+    </string-array>
+
+</resources>
