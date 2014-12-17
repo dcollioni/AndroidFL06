@@ -58,9 +58,11 @@ public class FormActivity extends Activity {
 	// configura o botão Salvar
 	private void configurarBtSalvar() {
 		
-		/*	TODO:
-		*	1. Alterar o texto do botão para "Atualizar" se for edição
-		*/
+		// se o id recebido é maior do que zero
+		if (contatoId > 0) {
+			// altera o texto do botão para "Atualizar"
+			btSalvar.setText(getString(R.string.atualizar));
+		}
 		
 		// adiciona o evento de click no botão
 		btSalvar.setOnClickListener(new View.OnClickListener() {
@@ -74,21 +76,32 @@ public class FormActivity extends Activity {
 				// cria um novo objeto Contato com os valores
 				Contato c = new Contato(nome, telefone);
 				
-				/*	TODO:
-				 * 	1. Verificar se é inclusão ou edição
-				 * 	2. Chamar o método correto passando o objeto contato
-				 * 	3. Finalizar a activity
-				 */
+				// se o id do contato é zero (inclusão)
+				if (contatoId == 0) {
+					// inclui o contato no banco
+					contatoDao.incluirContato(c);
+				}
+				// senão (alteração)
+				else {
+					// atualiza o contato no banco
+					contatoDao.atualizarContato(c, contatoId);
+				}
+				
+				// finaliza a FormActivity
+				finish();
 			}
 		});
 	}
 	
 	// carrega um contato pelo id recebido
 	private void carregarContato() {
-		/*	TODO:
-		 *	1. Pegar o contato do banco pelo ID
-		 *	2. Atualizar os campos Nome e Telefone com os valores do objeto 
-		 */
+		
+		// pega o contato pelo id recebido
+		Contato c = contatoDao.obterContato(contatoId);
+		
+		// atualiza os campos com os valores do contato
+		etNome.setText(c.getNome());
+		etTelefone.setText(c.getTelefone());
 	}
 	
 	@Override

@@ -70,10 +70,24 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-				/*	TODO:
-				*	Pegar o ID do contato selecionado
-				*	e abrir a FormActivity passando esse ID
-				*/
+				
+				// pega o contato selecionado
+				Contato c = (Contato)
+						parent.getItemAtPosition(position);
+				
+				// pega o id do contato no banco
+				long idContato = contatoDao.obterId(c);
+				
+				// cria uma intent para a tela FormActivity
+				Intent i = new Intent(
+								MainActivity.this,
+								FormActivity.class);
+				
+				// passa o id do contato para a intent
+				i.putExtra("id_contato", idContato);
+				
+				// inicia a intent para abrir a tela
+				startActivity(i);
 			}
 		});
     	
@@ -81,10 +95,13 @@ public class MainActivity extends Activity {
 
 			@Override
 			public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-				/* 	TODO:
-				*	Pegar o ID do contato selecionado
-				* 	e salvar na variável contatoIdSelecionado
-				*/
+				
+				// pega o contato selecionado na lista
+				Contato c = (Contato) 
+						parent.getItemAtPosition(position);
+				
+				// salva o id do contato na variável contatoIdSelecionado
+				contatoIdSelecionado = contatoDao.obterId(c);
 				
 				return false;
 			}
@@ -95,12 +112,18 @@ public class MainActivity extends Activity {
     
     // carrega os contatos do banco e mostra na lista
     private void carregarLvContatos() {
-    	/*	TODO:
-    	*	1. Limpar o array de contatos atual
-    	*	2. Pegar os contatos do banco usando o objeto contatoDao
-    	*	3. Atualizar o array de contatos com o resultado da busca
-    	*	4. Notificar o adapter sobre a alteração
-    	*/
+    	
+    	// limpa o array de contatos atual
+    	arrayContatos.clear();
+    	
+    	// pega todos os contatos cadastrados no banco
+    	ArrayList<Contato> cs = contatoDao.listarContatos();
+    	
+    	// popula o array de contatos com o resultado do banco
+    	arrayContatos.addAll(cs);
+    	
+    	// notifica o adapter da alteração no array
+    	adapterContatos.notifyDataSetChanged();
     }
     
     @Override
@@ -144,12 +167,18 @@ public class MainActivity extends Activity {
         }
         // senão, se clicar no menu "Excluir todos"
         else if (id == R.id.excluir_contatos) {
-        	/*	TODO:
-        	*	1. Passar por todos os itens do array de contatos
-        	*	2. Pegar o ID de cada item do array
-        	*	3. Chamar o método de excluir contato passando o ID
-        	*	4. Recarregar a lista de contatos 
-        	*/
+        	
+        	// passa por todos os contatos do array
+        	for (Contato c : arrayContatos) {
+				// pega o id do contato
+        		long cId = contatoDao.obterId(c);
+        		
+        		// exclui o contato do banco pelo id
+        		contatoDao.excluirContato(cId);
+			}
+        	
+        	// recarrega a lista de contatos
+        	carregarLvContatos();
         	
         	return true;
         }
@@ -186,11 +215,12 @@ public class MainActivity extends Activity {
 					
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						/*	TODO:
-						* 	1. Excluir o contato passando o Id selecionado
-						* 	2. Recarregar a lista de contatos
-						*/
 						
+						// exclui o contato do banco pelo id
+						contatoDao.excluirContato(contatoIdSelecionado);
+						
+						// recarrega a lista de contatos
+						carregarLvContatos();
 					}
 				});
     			alert.show();
