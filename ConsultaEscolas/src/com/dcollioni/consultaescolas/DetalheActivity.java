@@ -21,10 +21,17 @@ public class DetalheActivity extends Activity {
 		
 		carregarComponentes();
 		
-		/*	TODO:
-		 * 	1. Pegar o objeto escola recebido da intent
-		 * 	2. Atualizar os campos com os valores do objeto
-		 */
+		// pega a intent
+		Intent i = getIntent();
+		
+		// pega o objeto escola recebido
+		Escola e = (Escola) i.getSerializableExtra("escola");
+		
+		// atualiza os textviews com os valores do objeto
+		tvCodigo.setText(e.getCodigo());
+		tvNome.setText(e.getNome());
+		tvTelefone.setText(e.getTelefone());
+		tvEndereco.setText(e.getEndereco());
 	}
 	
 	private void carregarComponentes() {

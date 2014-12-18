@@ -52,12 +52,34 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				/*	TODO:
-				 * 	1. Pegar o idioma selecionado
-				 * 	2. A partir do idioma, definir o código do idioma
-				 * 	3. Pegar o texto digitado no campo
 				 * 	4. Montar a URL com os parâmetros
 				 * 	5. Executar a consulta passando a url
 				 */
+				
+				// pega o idioma selecionado
+				String idioma = spIdioma.getSelectedItem().toString();
+				
+				// pega o código do idioma selecionado
+				String codigoIdioma =
+						idioma.equals(getString(R.string.ingles)) ? "en" :
+						idioma.equals(getString(R.string.espanhol)) ? "es" :
+						idioma.equals(getString(R.string.frances)) ? "fr" : "";
+				
+				// pega o texto digitado
+				String texto = etTexto.getText().toString();
+				
+				// monta a url para traduzir
+				String url = "http://www.worldlingo.com/";
+				url += "S3704.3/texttranslate";
+				url += "?wl_srclang=pt";
+				url += "&wl_trglang=" + codigoIdioma;
+				url += "&wl_text=" + texto;
+				
+				// cria o objeto consulta async
+				ConsultaAsync consultaTraducao = new ConsultaAsync();
+				
+				// executa a consulta
+				consultaTraducao.execute(url);
 			}
 		});
     }
@@ -139,9 +161,8 @@ public class MainActivity extends Activity {
     	protected void onPostExecute(String result) {
     		try {
     			
-    			/*	TODO:
-    			 * 	1. Preencher o text view resultado com o resultado recebido
-    			 */
+    			// preenche o text view com o resultado
+    			tvResultado.setText(result);
 			}
 	        catch (Exception e) {
 	        	Log.e("Consultas", e.toString());

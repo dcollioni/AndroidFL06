@@ -8,6 +8,8 @@
         android:minSdkVersion="19"
         android:targetSdkVersion="19" />
 
+    <!-- Essa permissão é necessária para
+    	acessar a internet pelo nosso aplicativo. -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application

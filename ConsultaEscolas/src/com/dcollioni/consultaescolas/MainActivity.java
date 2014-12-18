@@ -61,12 +61,19 @@ public class MainActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, View view, int position,
 					long id) {
 				
-				/*	TODO:
-				 * 	1. Pegar a escola selecionada
-				 * 	2. Criar uma intent para abrir a activity Detalhe
-				 * 	3. Passar a escola para a intent
-				 * 	4. Iniciar a intent
-				 */
+				// pega a escola selecionada
+				Escola e = (Escola) parent.getItemAtPosition(position);
+				
+				// cria a intent para ir para Detalhe
+				Intent i = new Intent(
+								MainActivity.this,
+								DetalheActivity.class);
+				
+				// passa o objeto escola para a intent
+				i.putExtra("escola", e);
+				
+				// inicia a intent
+				startActivity(i);
 			}
 		});
     }
@@ -129,12 +136,37 @@ public class MainActivity extends Activity {
     	protected void onPostExecute(String result) {
     		try {
     			
-    			/*	TODO:
-    			 * 	1. Pegar o resultado recebido em forma de JSON
-    			 * 	2. Para cada resultado, criar um objeto escola
-    			 * 	3. Adicionar o objeto escola no array de escolas
-    			 * 	4. No fim, notificar o adapter sobre a alteração nos dados
-    			 */
+    			// cria um array de objetos JSON com o resultado
+    			JSONArray jsonArray = new JSONArray(result);
+    			
+    			// para cada objeto json do array
+    			for (int i = 0; i < jsonArray.length(); i++) {
+    				
+    				// cria um objeto json
+    				JSONObject jsonEscola = jsonArray.getJSONObject(i);
+    				
+    				// pega os valores do json escola
+    				String codigo = jsonEscola.getString("Code");
+    				String nome = jsonEscola.getString("Name");
+    				String telefone = jsonEscola.getString("Phone");
+    				String endereco = jsonEscola.getString("Address");
+    				
+    				// cria um objeto escola do java
+    				Escola e = new Escola();
+    				
+    				// popula o objeto escola com os valores do json
+    				e.setCodigo(codigo);
+    				e.setNome(nome);
+    				e.setTelefone(telefone);
+    				e.setEndereco(endereco);
+    				
+    				// adiciona o objeto no array da lista
+    				arrayEscolas.add(e);
+    				
+    			} // fecha for
+    			
+    			// notifico o adapter da alteração nos dados
+    			adapterEscolas.notifyDataSetChanged();
 	        }
 	        catch (Exception e) {
 	        	Log.e("Consultas", e.toString());
@@ -157,10 +189,12 @@ public class MainActivity extends Activity {
         int id = item.getItemId();
         if (id == R.id.action_carregar) {
             
-        	/*	TODO:
-        	 * 	1. Criar um objeto ConsultaAsync
-        	 * 	2. Executar a consulta passando a URL
-        	 */
+        	// cria um objeto de consulta async
+        	ConsultaAsync consultaEscolas = new ConsultaAsync();
+        	
+        	// executa a consulta
+        	consultaEscolas.execute(
+        			"http://schoollineup.apphb.com/api/Schools");
         	
         	return true;
         }
